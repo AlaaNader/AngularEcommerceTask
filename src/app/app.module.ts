@@ -3,14 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchComponent } from './components/search/search.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ProductComponent } from './components/product/product.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent,
+    ShoppingCartComponent,
+    ProductComponent,
+    SearchFilterPipe,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

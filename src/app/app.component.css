@@ -1,0 +1,33 @@
+/*nav section*/
+nav{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 40px 0;
+  background-color: lightgray;
+
+}
+/* from small to meduim  */
+@media(max-width:768px){
+  nav{
+     margin: 20px 10px;
+  }
+}
+.logo{
+  width: 130px;
+  cursor: pointer;
+}
+/* from small to meduim  */
+@media(max-width:768px){
+  .logo{
+    width: 100px;
+  }
+}
+.logo img{
+  width: 100%;
+}
+
+/*---------------------------------------------------------*/
+
+
+
+

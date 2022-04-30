@@ -1,0 +1,41 @@
+/* input group section*/
+.input-group{
+  width: 800px;
+}
+/* from small to meduim  */
+@media(max-width:768px){
+  .input-group{
+    width: 300px;
+    position: relative;
+  }
+}
+/*from meduim to large*/
+@media (min-width:769px) and (max-width:1084px){
+  .input-group{
+    width: 400px
+  }
+}
+.input-group .icon-background{
+  background-color: blue;
+  cursor: pointer;
+  border-top-right-radius: 5px;
+}
+/* from small to meduim  */
+@media(max-width:768px){
+  .input-group .icon-background{
+    width: 50px;
+  }
+}
+.icon-background i{
+  color: white;
+  margin: 15px 30px 12px;
+}
+/* from small to meduim  */
+@media(max-width:768px){
+  .input-group .icon-background i{
+    margin-left: 15px;
+  }
+}
+/*---------------------------------------------------------------------------------*/
+
+

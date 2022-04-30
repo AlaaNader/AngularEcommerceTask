@@ -1,0 +1,52 @@
+<section class="bodyContent">
+  <div class="displayPattern" #displayPattern >
+    <i class="fa fa-th" aria-hidden="true" (click)="displayGridOrList($event,'productsContainerGrid container',
+    'card shadow p-3 mb-5 bg-white rounded')"></i>&nbsp;
+    <i class="fa fa-list" aria-hidden="true" (click)="displayGridOrList($event,'productsContainerList container',
+    'cardList card shadow p-3 mb-5 bg-white rounded')"></i>&nbsp;
+    <div class="showSelection d-inline">
+    <label>show</label>&nbsp;
+    <select (change)="onViewSizeChange($event)">
+      <option value="12" selected> 12 </option>
+      <option value="24"> 24 </option>
+      <option value="36" > 36 </option>
+    </select>
+  </div>&nbsp;
+  <div class="filterSelection d-inline">
+    <label>Sort By:</label>&nbsp;
+    <select (change)="Filter($event)">
+      <option selected hidden selected> Relevane </option>
+      <option value="AlphaBet"> AlphBet </option>
+      <option value="ascending" > Price : Low To High </option>
+      <option value="descending" > Price : High To Low </option>
+    </select>
+</div>
+  </div>
+  <br/>
+  <div #productsContainerRef class="productsContainerGrid container">
+<div   #imageDivRef class="card shadow p-3 mb-5 bg-white rounded" *ngFor="let product of products |
+paginate:{itemsPerPage: numberOfProductsPerPage,currentPage: page,totalItems: count};" >
+  <div class="card-img-top">
+  <img  src={{product.thumbnail}} alt="Card image cap">
+</div>
+ <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <button class="btn btn-primary"> Quick View</button>-->
+  <div class="card-body">
+    <span class="card-text">{{product.description }}...</span>
+    <h5 class="card-title">{{product.title}}</h5>
+    <i class="fa fa-star" aria-hidden="true"></i>
+    <p class="card-text">{{product.price | currency}}</p>
+  </div>
+</div>
+</div>
+</section>
+<div class="d-flex justify-content-center">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onProductDataChange($event)"
+  >
+  </pagination-controls>
+</div>
+
+

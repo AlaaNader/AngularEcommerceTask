@@ -1,0 +1,65 @@
+/*general*/
+.blueIcon{
+  color:blue;
+}
+
+.bodyContent{
+  margin-top: 25%;
+}
+.displayPattern{
+  text-align: right;
+  margin-right: 80px;
+  margin-bottom: 60px;
+}
+.displayPattern i{
+  font-size: 20px;
+  cursor: pointer;
+}
+/*Grid appearance*/
+.productsContainerGrid{
+  display: grid ;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.card{
+  width: 16rem;
+}
+
+img{
+  width: 100%;
+  height: 200px;
+}
+span.card-text{
+  font-size: 13px;
+  color: gray;
+}
+
+/*List appearance*/
+.productsContainerList{
+  display: grid;
+  grid-template-rows: 1fr;
+}
+ .cardList{
+  width: 60%;
+  display: flex;
+  justify-content: left;
+}
+@media (max-width:1000px) {
+  .cardList{
+    width: 50%;
+  }
+}
+.cardList div.card-img-top{
+  width: 40%;
+  height: 100px;
+}
+@media(max-width:1000px) {
+  .cardList div.card-img-top{
+    width: 100%;
+  }
+}
+.cardList div.card-img-top img{
+  height: 100%
+}
