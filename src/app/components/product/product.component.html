@@ -1,9 +1,9 @@
 <section class="bodyContent">
   <div class="displayPattern" #displayPattern >
-    <i class="fa fa-th" aria-hidden="true" (click)="displayGridOrList($event,'productsContainerGrid container',
+    <i class="fa fa-th" aria-hidden="true" data-selected="selected" (click)="gridOrListView($event,'productsContainerGrid container',
     'card shadow p-3 mb-5 bg-white rounded')"></i>&nbsp;
-    <i class="fa fa-list" aria-hidden="true" (click)="displayGridOrList($event,'productsContainerList container',
-    'cardList card shadow p-3 mb-5 bg-white rounded')"></i>&nbsp;
+    <i class="fa fa-list" aria-hidden="true" (click)="gridOrListView($event,'productsContainerList container',
+    'cardList shadow p-3 mb-5 bg-white rounded')"></i>&nbsp;
     <div class="showSelection d-inline">
     <label>show</label>&nbsp;
     <select (change)="onViewSizeChange($event)">
@@ -24,7 +24,7 @@
   </div>
   <br/>
   <div #productsContainerRef class="productsContainerGrid container">
-<div   #imageDivRef class="card shadow p-3 mb-5 bg-white rounded" *ngFor="let product of products |
+<div   #card class="card shadow p-3 mb-5 bg-white rounded" *ngFor="let product of products |
 paginate:{itemsPerPage: numberOfProductsPerPage,currentPage: page,totalItems: count};" >
   <div class="card-img-top">
   <img  src={{product.thumbnail}} alt="Card image cap">

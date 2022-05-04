@@ -6,4 +6,5 @@
 <app-shopping-cart></app-shopping-cart>
 </nav>
   <app-product></app-product>
-<router-outlet></router-outlet>
+  <i  class="fa fa-arrow-up p-4 scrollBack bg-primary" #ArrowUpIcon (click)="scrollBack()"></i>
+<router-outlet (activate)="scrollBack()"></router-outlet>

@@ -8,7 +8,6 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ProductComponent } from './components/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SearchComponent,
     ShoppingCartComponent,
     ProductComponent,
-    SearchFilterPipe,
 
   ],
   imports: [
@@ -25,7 +23,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

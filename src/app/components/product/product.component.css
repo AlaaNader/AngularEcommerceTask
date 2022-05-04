@@ -1,5 +1,6 @@
 /*general*/
-.blueIcon{
+i[data-selected='selected']
+{
   color:blue;
 }
 

@@ -1,6 +1,7 @@
 import { SearchService } from './../../services/search.service';
 import { CrudService } from './../../services/crud.service';
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import * as $ from 'jquery'
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } fro
 })
 export class ProductComponent implements OnInit  {
   @ViewChild('productsContainerRef') productsContainerRef!:ElementRef;
-  @ViewChildren('imageDivRef') imageDivRef!:QueryList<ElementRef>;
+  @ViewChildren('card') card!:QueryList<ElementRef>;
   @ViewChild('displayPattern') displayPattern!:ElementRef
   products:any=[];
   page:any = 1;
@@ -30,10 +31,16 @@ export class ProductComponent implements OnInit  {
    }
 
    // Display List or Grid
-  displayGridOrList(event:any,productContainerName:string,imageDivName:string){
+  gridOrListView(event:any,productContainerName:string,cardName:string){
     this.productsContainerRef.nativeElement.className=productContainerName
-    this.imageDivRef.toArray().forEach((e:ElementRef)=>{
-      e.nativeElement.className=imageDivName
+    this.card.toArray().forEach((e:ElementRef)=>{
+      e.nativeElement.className=cardName
+    });
+    this.selectedView(event.target)
+  }
+  selectedView(event:any){
+    $(document).ready(function(){
+      $(event).attr("data-selected","selected").siblings().removeAttr("data-selected");
     })
   }
 
@@ -60,12 +67,8 @@ export class ProductComponent implements OnInit  {
   }
 
   priceFilterascending(){
-    this.page = 1
-     this.crud.getProducts().subscribe(
-      (product)=>{
-        return this.products = Object.values(product).sort(this.sortingPriceAscending)
-      }
-    )
+    this.page = 1;
+    this.products.sort(this.sortingPriceAscending)
   }
 
   sortingPriceDescending(a:any,b:any){
@@ -73,12 +76,8 @@ export class ProductComponent implements OnInit  {
   }
 
   priceFilterdescending(){
-    this.page = 1
-     this.crud.getProducts().subscribe(
-      (product)=>{
-        return this.products = Object.values(product).sort(this.sortingPriceDescending)
-      }
-    )
+    this.page = 1;
+    this.products.sort(this.sortingPriceDescending)
   }
   sortingAlphaBet(a:any, b:any){
     let RemoveSymbolsExceptAlphaBets = /[^a-z]/gi;
@@ -90,17 +89,13 @@ export class ProductComponent implements OnInit  {
   }
   titleFilter(){
     this.page= 1;
-      this.crud.getProducts().subscribe(
-      (product)=>{
-       return this.products = Object.values(product).sort(this.sortingAlphaBet);
-      }
-    )
+    this.products.sort(this.sortingAlphaBet)
   }
-  jumbTable:any={
+  /*jumbTable:any={
     'ascending' :this.priceFilterascending,
     'descending' : this.priceFilterdescending,
     'AlphaBet' : this.titleFilter
-  }
+  }*/
 
  Filter(event:any){
   let FilterType = event.target.value;
@@ -115,9 +110,9 @@ export class ProductComponent implements OnInit  {
    }
  }
 
-/*  Filter(event:any){
+ /*Filter(event:any){
     let FilterType = event.target.value;
-    this.jumbTable[FilterType]
+    console.log(this.jumbTable[FilterType]())
   }*/
 
   // pagination
@@ -127,8 +122,7 @@ export class ProductComponent implements OnInit  {
    // number of products per page
   onViewSizeChange(event: any): void {
     this.numberOfProductsPerPage = event.target.value;
-    /*this.page = 1;
-    this.getAllProducts();*/
+
   }
 
 

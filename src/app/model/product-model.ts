@@ -11,3 +11,5 @@ export interface ProductModel{
   thumbnail: string,
   images: [string]
 }
+
+
