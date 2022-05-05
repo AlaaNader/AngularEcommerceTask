@@ -1,7 +1,6 @@
 /*general*/
-i[data-selected='selected']
-{
-  color:blue;
+i[data-selected='selected']{
+  color:rgb(2, 117, 216)
 }
 
 .bodyContent{
